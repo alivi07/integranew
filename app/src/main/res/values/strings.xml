@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Presensi Online</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">Home</string>
+    <string name="Laporan">Laporan</string>
+    <string name="profil">Profil</string>
+    <string name="logout">Logout</string>
+    <string-array name="daftar_metode">
+        <item>Straight Line</item>
+        <item>Declining Balance</item>
+        <item>Double Declining Balance</item>
+        <item>Unit of Production</item>
+        <item>Sum-of the Year</item>
+    </string-array>
+
+    <string-array name="laporan_arrays">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
+</resources>
