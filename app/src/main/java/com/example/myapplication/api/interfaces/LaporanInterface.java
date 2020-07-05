@@ -16,7 +16,6 @@ public interface LaporanInterface {
     @POST(Config.API_LAPORAN)
     Call<LaporanResponse> getAllLaporan(
             @Field("email") String email,
-            @Field("tanggal") String tanggal,
             @Field("spinner") String spinner
     );
 

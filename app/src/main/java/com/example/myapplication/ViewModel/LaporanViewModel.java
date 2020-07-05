@@ -20,11 +20,11 @@ public class LaporanViewModel extends ViewModel {
     //private MutableLiveData<List<AbsenItem>> listMutableLiveData;
     private MutableLiveData<List<AbsenItem>> listMutableLiveData = new MutableLiveData();
 
-    public void setDataLaporan(String email, String tanggal) {
+    public void setDataLaporan(String email, String spinner) {
         if (this.laporanService == null) {
             laporanService = new LaporanService();
         }
-        laporanService.getAPILaporan().getAllLaporan("get", email, tanggal).enqueue(new Callback<LaporanResponse>(){
+        laporanService.getAPILaporan().getAllLaporan(email, spinner).enqueue(new Callback<LaporanResponse>(){
             @Override
             public void onResponse (Call<LaporanResponse> call, Response<LaporanResponse> response) {
                 LaporanResponse laporanResponse = response.body();

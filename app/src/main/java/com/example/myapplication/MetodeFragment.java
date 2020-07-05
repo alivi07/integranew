@@ -49,7 +49,7 @@ public class MetodeFragment extends Fragment {
     private LaporanViewModel laporanViewModel;
     private Button btn_laporan;
     LoadingDialog loadingDialog;
-    //String strSpinner, strEmail;
+    String strEmail, strSpinner;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -201,49 +201,137 @@ public class MetodeFragment extends Fragment {
         myspinner = (Spinner) view.findViewById(R.id.sp);
         rvLaporan = view.findViewById(R.id.rv_laporan);
         String[] values =
-                {"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",};
+                {"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus","September", "Oktober", "November", "Desember",};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         myspinner.setAdapter(adapter);
 
-        btn_laporan = (Button) view.findViewById(R.id.btn_laporan);
-        btn_laporan.setOnClickListener(new View.OnClickListener(){
+        User user = PrefUtil.getUser(getContext(), PrefUtil.USER_SESSION);
+        strEmail = user.getEmail();
+
+        myspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position,
+                                       long id) {
+                switch (position) {
+                    case 0:
+
+                        strSpinner = "1";
+                        sendData(strEmail, strSpinner);
+                        break;
+
+                    case 1:
+                        strSpinner = "2";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 2:
+                        strSpinner = "3";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 3:
+                        strSpinner = "4";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 4:
+                        strSpinner = "5";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 5:
+                        strSpinner = "6";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 6:
+                        strSpinner = "7";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 7:
+                        strSpinner = "8";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 8:
+                        strSpinner = "9";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 9:
+                        strSpinner = "10";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 10:
+                        strSpinner = "11";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    case 11:
+                        strSpinner = "12";
+                        sendData(strEmail, strSpinner);
+                        break;
+                    default:
+                        break;
+                }
+
+                Toast.makeText(parent.getContext(),
+                        "On Item Select : \n" + parent.getItemAtPosition(position).toString(),
+                        Toast.LENGTH_LONG).show();
+            }
+
             @Override
-            public void onClick(View v) {
-                User user = PrefUtil.getUser(getContext(), PrefUtil.USER_SESSION);
-                String strEmail = user.getData().getEmail();
-                final String text = myspinner.getSelectedItem().toString();
-                laporanAct(strEmail, text);}
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
         });
 
+//
+//        btn_laporan = (Button) view.findViewById(R.id.btn_laporan);
+//        btn_laporan.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                User user = PrefUtil.getUser(getContext(), PrefUtil.USER_SESSION);
+//                String strEmail = user.getEmail();
+//                final String text = myspinner.getSelectedItem().toString();
+//                laporanAct(strEmail, text);}
+//        });
+
 
     }
 
-    void laporanAct(String strEmail, String text){
-        if (text == "Juli") {
-            String strSpinner = "7";
-            //  strSpinner.sendData();
-            loadingDialog = new LoadingDialog(getActivity());
-            loadingDialog.startLoadingDialog();
-            User user = PrefUtil.getUser(getActivity(), PrefUtil.USER_SESSION);
-            //String strEmail = user.getData().getEmail();
+//    void laporanAct(String strEmail, String text){
+//        if (text == "Juli") {
+//            String strSpinner = "7";
+//            //  strSpinner.sendData();
+////            loadingDialog = new LoadingDialog(getActivity());
+////            loadingDialog.startLoadingDialog();
+//            //User user = PrefUtil.getUser(getContext(), PrefUtil.USER_SESSION);
+//            //String strEmail = user.getData().getEmail();
+//
+////            final LoadingDialog loadingDialog = new LoadingDialog(requireActivity());
+////            loadingDialog.startLoadingDialog();
+//
+//            adapterLaporan = new AdapterLaporan(getContext());
+//            adapterLaporan.notifyDataSetChanged();
+//
+//
+//            rvLaporan.setLayoutManager(new GridLayoutManager(getContext(), 1));
+//
+//            laporanViewModel = new ViewModelProvider(this).get(LaporanViewModel.class);
+//            laporanViewModel.setDataLaporan(strEmail, strSpinner);
+//            laporanViewModel.getAbsen().observe(this, getAbsen);
+//            rvLaporan.setAdapter(adapterLaporan);
+//        }
+//    }
 
-            final LoadingDialog loadingDialog = new LoadingDialog(requireActivity());
-            loadingDialog.startLoadingDialog();
+    void sendData(String strEmail, String strSpinner){
+        adapterLaporan = new AdapterLaporan(getContext());
+        adapterLaporan.notifyDataSetChanged();
 
-            adapterLaporan = new AdapterLaporan(getActivity());
-            adapterLaporan.notifyDataSetChanged();
+        rvLaporan.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
+        laporanViewModel = new ViewModelProvider(this).get(LaporanViewModel.class);
+        laporanViewModel.setDataLaporan(strEmail, strSpinner);
+        laporanViewModel.getAbsen().observe(this, getAbsen);
+        rvLaporan.setAdapter(adapterLaporan);
 
-            rvLaporan.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-
-            laporanViewModel = new ViewModelProvider(this).get(LaporanViewModel.class);
-            laporanViewModel.setDataLaporan(strEmail, strSpinner);
-            laporanViewModel.getAbsen().observe(this, getAbsen);
-            rvLaporan.setAdapter(adapterLaporan);
-        }
     }
+
     private Observer<List<AbsenItem>> getAbsen = new Observer<List<AbsenItem>>() {
         @Override
         public void onChanged(List<AbsenItem> absenItems) {

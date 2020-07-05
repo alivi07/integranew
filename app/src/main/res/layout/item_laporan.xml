@@ -5,11 +5,18 @@
     android:layout_height="wrap_content"
     android:id="@+id/item_list_laporan"
     android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/biru" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="2dp">
+
+
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"

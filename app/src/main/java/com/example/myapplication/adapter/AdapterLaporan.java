@@ -70,7 +70,7 @@ public class AdapterLaporan extends RecyclerView.Adapter<AdapterLaporan.ViewHold
             super(itemView);
             tvtanggal = itemView.findViewById(R.id.tv_tanggal);
             tvtjamdatang = itemView.findViewById(R.id.tvjam_datang);
-            tvjampulang = itemView.findViewById(R.id.tvket_jam_pulang);
+            tvjampulang = itemView.findViewById(R.id.tvjam_pulang);
             tvketjamdatang = itemView.findViewById(R.id.tvket_jam_datang);
             tvketjampulang = itemView.findViewById(R.id.tvket_jam_pulang);
 
